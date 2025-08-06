@@ -1,0 +1,154 @@
+{
+  "formDescription": "Use this form to provide your correct Taxpayer Identification Number (TIN) to requesters who are required to file information returns with the IRS.",
+  "formTitle": "Request for Taxpayer Identification Number and Certification",
+  "sections": [
+    {
+      "description": "Enter your name, business name (if applicable), and tax classification.",
+      "fields": [
+        {
+          "label": "Name of entity/individual",
+          "name": "name",
+          "required": true,
+          "tooltip": "Enter the name of the entity or individual. For sole proprietors, enter the owner's name.",
+          "type": "string"
+        },
+        {
+          "label": "Business name/disregarded entity name",
+          "name": "businessName",
+          "required": false,
+          "tooltip": "Enter the business name if different from the owner's name.",
+          "type": "string"
+        },
+        {
+          "label": "Tax classification",
+          "name": "taxClassification",
+          "options": [
+            "Individual/sole proprietor",
+            "C corporation",
+            "S corporation",
+            "Partnership",
+            "Trust/estate",
+            "LLC",
+            "Other"
+          ],
+          "required": true,
+          "tooltip": "Select the appropriate tax classification for the entity/individual.",
+          "type": "radio"
+        },
+        {
+          "label": "Foreign partner, owner, or beneficiary confirmation",
+          "name": "partnershipInterest",
+          "required": false,
+          "tooltip": "Check this box if you have any foreign partners, owners, or beneficiaries and you are providing this form to a partnership, trust, or estate in which you have an ownership interest.",
+          "type": "checkbox"
+        },
+        {
+          "label": "Exemptions",
+          "name": "exemptions",
+          "required": false,
+          "tooltip": "Enter any applicable exemption codes. See instructions for details.",
+          "type": "string"
+        },
+        {
+          "label": "Requester's name and address (optional)",
+          "name": "requesterNameAndAddress",
+          "required": false,
+          "tooltip": "Enter the requester's name and address.",
+          "type": "string"
+        },
+        {
+          "label": "Address",
+          "name": "address",
+          "required": true,
+          "tooltip": "Enter the address (number, street, and apt. or suite no.).",
+          "type": "string"
+        },
+        {
+          "label": "City, state, and ZIP code",
+          "name": "cityStateZip",
+          "required": true,
+          "tooltip": "Enter the city, state, and ZIP code.",
+          "type": "string"
+        },
+        {
+          "label": "List account number(s) here (optional)",
+          "name": "accountNumber",
+          "required": false,
+          "tooltip": "List any relevant account numbers.",
+          "type": "string"
+        }
+      ],
+      "title": "General Information"
+    },
+    {
+      "description": "Enter your Taxpayer Identification Number (TIN).",
+      "fields": [
+        {
+          "errorMessage": "Please enter a valid SSN in the format XXX-XX-XXXX",
+          "label": "Social security number",
+          "name": "socialSecurityNumber",
+          "pattern": "^\\d{3}-\\d{2}-\\d{4}$",
+          "required": false,
+          "tooltip": "Enter your Social Security Number (SSN) if you are an individual.",
+          "type": "string"
+        },
+        {
+          "errorMessage": "Please enter a valid EIN in the format XX-XXXXXXX",
+          "label": "Employer identification number",
+          "name": "employerIdentificationNumber",
+          "pattern": "^\\d{2}-\\d{7}$",
+          "required": false,
+          "tooltip": "Enter your Employer Identification Number (EIN) if you are a business entity.",
+          "type": "string"
+        }
+      ],
+      "title": "Taxpayer Identification Number (TIN)"
+    },
+    {
+      "description": "Certify that the information provided is correct.",
+      "fields": [
+        {
+          "label": "Certification statement 1",
+          "name": "certification1",
+          "readonly": true,
+          "type": "string",
+          "value": "The number shown on this form is my correct taxpayer identification number (or I am waiting for a number to be issued to me); and"
+        },
+        {
+          "label": "Certification statement 2",
+          "name": "certification2",
+          "readonly": true,
+          "type": "string",
+          "value": "I am not subject to backup withholding because (a) I am exempt from backup withholding, or (b) I have not been notified by the Internal Revenue Service (IRS) that I am subject to backup withholding as a result of a failure to report all interest or dividends, or (c) the IRS has notified me that I am no longer subject to backup withholding; and"
+        },
+        {
+          "label": "Certification statement 3",
+          "name": "certification3",
+          "readonly": true,
+          "type": "string",
+          "value": "I am a U.S. citizen or other U.S. person (defined below); and"
+        },
+        {
+          "label": "Certification statement 4",
+          "name": "certification4",
+          "readonly": true,
+          "type": "string",
+          "value": "The FATCA code(s) entered on this form (if any) indicating that I am exempt from FATCA reporting is correct."
+        },
+        {
+          "label": "Signature of U.S. person",
+          "name": "signature",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "label": "Date",
+          "name": "date",
+          "required": true,
+          "type": "date"
+        }
+      ],
+      "title": "Certification"
+    }
+  ]
+}

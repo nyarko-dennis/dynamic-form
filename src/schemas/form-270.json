@@ -1,0 +1,295 @@
+{
+  "formTitle": "Form 720: Quarterly Federal Excise Tax Return",
+  "formDescription": "Complete this form for quarterly federal excise tax returns. For details, see the official IRS instructions.",
+  "sections": [
+    {
+      "title": "Return Information",
+      "description": "Basic information about this return",
+      "fields": [
+        {
+          "name": "finalReturn",
+          "label": "Final return",
+          "type": "boolean",
+          "tooltip": "Check if this is your final return"
+        },
+        {
+          "name": "addressChange",
+          "label": "Address change",
+          "type": "boolean",
+          "tooltip": "Check if your address has changed since your last return"
+        }
+      ]
+    },
+    {
+      "title": "Taxpayer Information",
+      "description": "Enter your identification details",
+      "fields": [
+        {
+          "name": "taxpayerName",
+          "label": "Name",
+          "type": "string",
+          "placeholder": "Enter name of taxpayer",
+          "validation": {
+            "required": true,
+            "errorMessage": "Taxpayer name is required"
+          }
+        },
+        {
+          "name": "streetAddress",
+          "label": "Number, street, and room or suite no.",
+          "type": "string",
+          "placeholder": "P.O. Box requires special instructions",
+          "validation": {
+            "required": true,
+            "errorMessage": "Street address is required"
+          },
+          "helpText": "If you have a P.O. Box, enter your street address here, not the P.O. Box"
+        },
+        {
+          "name": "cityAddress",
+          "label": "City or town, state or province, country, and ZIP or foreign postal code",
+          "type": "string",
+          "validation": {
+            "required": true,
+            "errorMessage": "City address is required"
+          }
+        },
+        {
+          "name": "employerIdNumber",
+          "label": "Employer identification number (EIN)",
+          "type": "string",
+          "placeholder": "XX-XXXXXXX",
+          "validation": {
+            "required": true,
+            "pattern": "^\\d{2}-\\d{7}$",
+            "errorMessage": "Please enter a valid EIN in the format XX-XXXXXXX"
+          },
+          "tooltip": "Your 9-digit Employer Identification Number"
+        },
+        {
+          "name": "state",
+          "label": "State",
+          "type": "radio",
+          "options": ["CA", "NY", "TX", "FL", "Other"],
+          "validation": {
+            "required": true,
+            "errorMessage": "Please select a state"
+          }
+        },
+        {
+          "name": "county",
+          "label": "County",
+          "type": "radio",
+          "dependsOn": "state",
+          "conditional": {
+            "field": "state",
+            "equals": "Other"
+          },
+          "options": ["Other - please specify"],
+          "helpText": "Select your county"
+        },
+        {
+          "name": "countyName",
+          "label": "County name",
+          "type": "string",
+          "conditional": {
+            "field": "state",
+            "equals": "Other"
+          },
+          "placeholder": "Enter county name"
+        }
+      ]
+    },
+    {
+      "title": "Tax Calculations",
+      "description": "Enter tax amounts for the quarter",
+      "fields": [
+        {
+          "name": "domesticPetroleumSuperfundTax",
+          "label": "Domestic petroleum superfund tax",
+          "type": "number",
+          "placeholder": "0.00",
+          "validation": {
+            "min": 0,
+            "errorMessage": "Amount cannot be negative"
+          },
+          "tooltip": "Tax on crude oil received at a U.S. refinery",
+          "helpText": "Enter the total tax for domestic petroleum products for the quarter",
+          "style": {
+            "backgroundColor": "lightyellow"
+          }
+        },
+        {
+          "name": "domesticPetroleumOilSpillTax",
+          "label": "Domestic petroleum oil spill tax",
+          "type": "number",
+          "placeholder": "0.00",
+          "validation": {
+            "min": 0,
+            "errorMessage": "Amount cannot be negative"
+          }
+        },
+        {
+          "name": "importedPetroleumSuperfundTax",
+          "label": "Imported petroleum products superfund tax",
+          "type": "number",
+          "placeholder": "0.00",
+          "validation": {
+            "min": 0,
+            "errorMessage": "Amount cannot be negative"
+          }
+        },
+        {
+          "name": "importedPetroleumOilSpillTax",
+          "label": "Imported petroleum products oil spill tax",
+          "type": "number",
+          "placeholder": "0.00",
+          "validation": {
+            "min": 0,
+            "errorMessage": "Amount cannot be negative"
+          }
+        },
+        {
+          "name": "chemicalsOtherThanOdcs",
+          "label": "Chemicals (other than ODCs)",
+          "type": "number",
+          "placeholder": "0.00",
+          "validation": {
+            "min": 0,
+            "errorMessage": "Amount cannot be negative"
+          }
+        },
+        {
+          "name": "importedChemicalSubstances",
+          "label": "Imported chemical substances",
+          "type": "number",
+          "placeholder": "0.00",
+          "validation": {
+            "min": 0,
+            "errorMessage": "Amount cannot be negative"
+          }
+        },
+        {
+          "name": "taxCategories",
+          "label": "Select applicable tax categories",
+          "type": "multiselect",
+          "options": ["Fuel", "Retail", "Manufacturer", "Environmental", "Other"],
+          "helpText": "Select all tax categories that apply to your business"
+        }
+      ]
+    },
+    {
+      "title": "Third Party Designee",
+      "description": "Information about the person who can discuss this return with the IRS",
+      "fields": [
+        {
+          "name": "allowDiscussionWithIrs",
+          "label": "Do you want to allow another person to discuss this return with the IRS?",
+          "type": "radio",
+          "options": ["Yes", "No"],
+          "validation": {
+            "required": true,
+            "errorMessage": "Please select Yes or No"
+          }
+        },
+        {
+          "name": "designeeName",
+          "label": "Designee's name",
+          "type": "string",
+          "conditional": {
+            "field": "allowDiscussionWithIrs",
+            "equals": "Yes"
+          },
+          "validation": {
+            "required": true,
+            "errorMessage": "Designee name is required when allowing discussion with IRS"
+          }
+        },
+        {
+          "name": "designeePhone",
+          "label": "Phone no.",
+          "type": "string",
+          "placeholder": "555-555-5555",
+          "conditional": {
+            "field": "allowDiscussionWithIrs",
+            "equals": "Yes"
+          },
+          "validation": {
+            "required": true,
+            "pattern": "^\\d{3}-\\d{3}-\\d{4}$",
+            "errorMessage": "Please enter a valid phone number in the format XXX-XXX-XXXX"
+          }
+        },
+        {
+          "name": "designeePin",
+          "label": "Personal identification number (PIN)",
+          "type": "string",
+          "placeholder": "5-digit PIN",
+          "conditional": {
+            "field": "allowDiscussionWithIrs",
+            "equals": "Yes"
+          },
+          "validation": {
+            "required": true,
+            "pattern": "^\\d{5}$",
+            "errorMessage": "Please enter a valid 5-digit PIN"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sign Here",
+      "description": "Signature and date",
+      "fields": [
+        {
+          "name": "signature",
+          "label": "Signature",
+          "type": "signature",
+          "width": 400,
+          "height": 200,
+          "validation": {
+            "required": true,
+            "errorMessage": "Signature is required"
+          },
+          "helpText": "Please sign using the signature pad below"
+        },
+        {
+          "name": "signatureDate",
+          "label": "Date",
+          "type": "date",
+          "validation": {
+            "required": true,
+            "errorMessage": "Date is required"
+          }
+        },
+        {
+          "name": "preparerIsSelfEmployed",
+          "label": "Check if self-employed",
+          "type": "boolean"
+        },
+        {
+          "name": "additionalNotes",
+          "label": "Additional Notes",
+          "type": "textarea",
+          "rows": 4,
+          "placeholder": "Enter any additional information here",
+          "helpText": "Use this space to provide any additional information relevant to your return"
+        },
+        {
+          "name": "supportingDocuments",
+          "label": "Supporting Documents",
+          "type": "dropzone",
+          "accept": ".pdf,.jpg,.png",
+          "maxSize": 5000000,
+          "maxFiles": 5,
+          "placeholder": "Drag and drop supporting documents here, or click to select files",
+          "helpText": "Upload any supporting documents (PDF, JPG, or PNG files only, max 5MB)",
+          "validation": {
+            "required": true,
+            "errorMessage": "At least one supporting document is required"
+          }
+        }
+      ]
+    }
+  ]
+}
