@@ -96,12 +96,14 @@ export interface DynamicFormGeneratorProps {
   schema: FormSchema
   onSubmit?: (data: Record<string, unknown>) => void
   initialData?: Record<string, unknown>
+  hideHeaders?: boolean
 }
 
 export function DynamicFormGenerator({
   schema,
   onSubmit: externalSubmit,
-  initialData = {}
+  initialData = {},
+  hideHeaders = false
 }: DynamicFormGeneratorProps) {
 
   // We no longer need formData state. React-hook-form handles it.
@@ -747,12 +749,14 @@ export function DynamicFormGenerator({
             // Render sections if they exist
             schema.sections.map((section, index) => (
               <div key={index} className="space-y-4">
-                <div className="border-b pb-2">
-                  <h3 className="text-lg font-medium">{section.title}</h3>
-                  {section.description && (
-                    <p className="text-sm text-muted-foreground">{section.description}</p>
-                  )}
-                </div>
+                {!hideHeaders && (
+                  <div className="border-b pb-2">
+                    <h3 className="text-lg font-medium">{section.title}</h3>
+                    {section.description && (
+                      <p className="text-sm text-muted-foreground">{section.description}</p>
+                    )}
+                  </div>
+                )}
                 <div className={cn(
                   "grid gap-4",
                   schema.layout?.columns === 2 ? "grid-cols-1 md:grid-cols-2" :

@@ -65,11 +65,6 @@ export function MultiStepForm({ schema }: MultiStepFormProps) {
   
   return (
     <div className="space-y-6 max-w-4xl mx-auto bg-white/50 backdrop-blur-sm p-6 rounded-lg shadow-md">
-      <div>
-        <h2 className="text-2xl font-bold">{schema.formTitle}</h2>
-        <p className="text-muted-foreground">{schema.formDescription}</p>
-      </div>
-      
       {/* Progress bar */}
       <div className="w-full bg-gray-200 rounded-full h-2.5">
         <div 
@@ -111,6 +106,7 @@ export function MultiStepForm({ schema }: MultiStepFormProps) {
           schema={getCurrentStepSchema()} 
           onSubmit={handleStepSubmit}
           initialData={formData}
+          hideHeaders={true}
         />
         
         {/* Navigation buttons */}

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { getSchemaById } from "@/lib/schema-service"
-import { DynamicFormGenerator, FormSchema } from "@/components/dynamic-form-generator"
+import { FormSchema } from "@/components/dynamic-form-generator"
+import { MultiStepForm } from "@/components/multi-step-form"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { AppSidebar } from "@/components/app-sidebar"
@@ -87,12 +88,8 @@ export default function DynamicFormPage({ params }: { params: { schemaId: string
             </Card>
           ) : (
             <Card>
-              <CardHeader>
-                <CardTitle>{schema.formTitle}</CardTitle>
-                <CardDescription>{schema.formDescription}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <DynamicFormGenerator schema={schema} onSubmit={handleSubmit} />
+              <CardContent className="pt-6">
+                <MultiStepForm schema={schema} />
               </CardContent>
             </Card>
           )}
